@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Today is {{ date }} {% endblock %}</h1>
+
+    {% block weather_today %} 
+    <table>
+
+
+        <thead><tr>
+            <th>Item</th>
+            <th>Conclusion</th>
+            <th>Value yesterday</th>
+            <th>Value one year ago</th>
+        </tr></thead>
+        <tbody>
+            {% for i in weather_analysis %}
+            <tr>
+                <td>{{ i[0] }}_________</td>
+                <td>{{ i[1] }}_________</td>
+                <td>{{ i[2] }}_________</td>
+                <td>{{ i[3] }}_________</td>
+            </tr>
+            {% endfor %}
+
+    </table>
+    {% endblock %}
+
+{% endblock %}

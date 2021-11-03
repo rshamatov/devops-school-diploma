@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Today is {{ date }} {% endblock %}</h1>
+
+    {% block weather_today %} 
+    <table>
+
+        <thead><tr>
+            <th>Date</th>
+            <th>Temp</th>
+            <th>Wind Direction</th>
+            <th>Wind Speed</th>
+            <th>Air Pressure</th>
+            <th>Humidity</th>
+            <th>Visibility</th>
+            <th>Predictability</th>
+        </tr></thead>
+        <tbody>
+            {% for i in weather_list %}
+            <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+                <td>{{ i[2] }}</td>
+                <td>{{ i[3] }}</td>
+                <td>{{ i[4] }}</td>
+                <td>{{ i[5] }}</td>
+                <td>{{ i[6] }}</td>
+                <td>{{ i[7] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+
+{% endblock %}
