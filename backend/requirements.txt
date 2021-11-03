@@ -1,0 +1,6 @@
+requests
+configparser
+psycopg2-binary
+flask
+gunicorn
+pandas
