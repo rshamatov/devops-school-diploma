@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  diploma-frontend:
+    image: diploma-frontend:0.2.2
+    build:
+      context: frontend/.
+      dockerfile: ./Dockerfile
+    ports:
+      - 81:5000
+  
+  diploma-backend:
+    image: diploma-backend:0.2.2
+    build:
+      context: backend/.
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:5000
+
+  diploma-postgres:
+    image: diploma-postgres
+    container_name: postgres
+    ports: 
+      - 5432:5432
+    environment:
+      #- POSTGRES_DB:mypostgres
+      - POSTGRES_USER:u
+      - POSTGRES_PASSWORD:ps
