@@ -14,7 +14,7 @@ logging.basicConfig(
 
 
 app = Flask(__name__)
-WEB_HOST_ADDRESS = '127.0.0.1:80'
+WEB_HOST_ADDRESS = 'backend:5000'
 
 DATE_FORMAT = '%Y-%m-%d'
    
