@@ -1,28 +1,49 @@
 version: '3.4'
 
 services:
+  diploma-postgres:
+    image: "ravsham/diploma:postgres"
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: u
+      POSTGRES_PASSWORD: p
+      #- POSTGRES_DB:mypostgres
+    networks: 
+      - backend
+
   diploma-frontend:
-    image: diploma-frontend:0.2.2
+    image: "ravsham/diploma:frontend"
     build:
       context: frontend/.
       dockerfile: ./Dockerfile
     ports:
       - 81:5000
+    networks:
+      - frontend
+    links:
+      - "diploma-backend:backend"
   
   diploma-backend:
-    image: diploma-backend:0.2.2
+    image: "ravsham/diploma:backend"
     build:
       context: backend/.
       dockerfile: ./Dockerfile
     ports:
       - 80:5000
+    networks: 
+      - frontend
+      - backend
+    links:
+      - "diploma-postgres:database"
 
-  diploma-postgres:
-    image: diploma-postgres
-    container_name: postgres
-    ports: 
-      - 5432:5432
-    environment:
-      #- POSTGRES_DB:mypostgres
-      - POSTGRES_USER:u
-      - POSTGRES_PASSWORD:ps
+
+networks: 
+  frontend:
+    name: custom_frontend
+    # driver: custom-driver-1
+
+  backend: 
+    name: custom_backend
+    # driver: custom-driver-1
