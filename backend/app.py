@@ -5,6 +5,7 @@ import sys
 import logging
 import requests
 import statistics
+from os import environ
 from datetime import datetime
 from flask import Flask, jsonify
 from configparser import ConfigParser
@@ -46,13 +47,19 @@ def subtract_years(dt, years):
 
 app = Flask(__name__)
 
-config = ConfigParser()
-config.read('backend.cfg')
-DB_USER = config['database']['user']
-DB_PASS = config['database']['pass']
-DB_HOST_IP = config['database']['host_ip']
-DB_HOST_PORT = config['database']['host_port']
-DB_NAME = config['database']['db_name']
+# config = ConfigParser()
+# config.read('backend.cfg')
+DB_USER = environ.get('db_user')        # config['database']['user']
+DB_PASS = environ.get('db_pass')        # config['database']['pass']
+DB_HOST_IP = environ.get('db_host')     # config['database']['host_ip']
+DB_HOST_PORT = environ.get('db_port')   # config['database']['host_port']
+DB_NAME = environ.get('db_name')        # config['database']['db_name']
+
+logging.info(
+    f"Environment variables: db_host: '{DB_HOST_IP}', " + \
+    f"db_port: '{DB_HOST_PORT}', " + \
+    f"db_name: '{DB_NAME}', " + \
+    f"db_user: '{DB_USER}'")
 
 db_initial = DbConnection(DB_HOST_IP, DB_HOST_PORT, DB_USER, DB_PASS)
 db_initial.create_database(DB_NAME)
