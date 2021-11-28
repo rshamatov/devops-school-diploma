@@ -16,7 +16,7 @@ logging.basicConfig(
 app = Flask(__name__)
 BACKEND_ADDRESS = environ.get('BACKEND_HOST_IP')
 BACKEND_PORT = environ.get('BACKEND_HOST_PORT')
-WEB_HOST_ADDRESS = f"{BACKEND_HOST_IP}:{BACKEND_HOST_PORT}"
+WEB_HOST_ADDRESS = f"{BACKEND_ADDRESS}:{BACKEND_PORT}"
 logging.info(f"Using Backend address {WEB_HOST_ADDRESS}")
 #'backend:5000'
 
