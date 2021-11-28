@@ -4,6 +4,7 @@ import sys
 import logging
 import requests
 from datetime import datetime
+from os import environ
 from flask import Flask, render_template
 
 logging.basicConfig(
@@ -12,9 +13,12 @@ logging.basicConfig(
     stream = sys.stdout
 )
 
-
 app = Flask(__name__)
-WEB_HOST_ADDRESS = 'backend:5000'
+BACKEND_ADDRESS = environ.get('BACKEND_HOST_IP')
+BACKEND_PORT = environ.get('BACKEND_HOST_PORT')
+WEB_HOST_ADDRESS = f"{BACKEND_HOST_IP}:{BACKEND_HOST_PORT}"
+logging.info(f"Using Backend address {WEB_HOST_ADDRESS}")
+#'backend:5000'
 
 DATE_FORMAT = '%Y-%m-%d'
    
