@@ -49,11 +49,11 @@ app = Flask(__name__)
 
 # config = ConfigParser()
 # config.read('backend.cfg')
-DB_USER = environ.get('db_user')        # config['database']['user']
-DB_PASS = environ.get('db_pass')        # config['database']['pass']
-DB_HOST_IP = environ.get('db_host')     # config['database']['host_ip']
-DB_HOST_PORT = environ.get('db_port')   # config['database']['host_port']
-DB_NAME = environ.get('db_name')        # config['database']['db_name']
+DB_USER = environ.get('DB_USER')        # config['database']['user']
+DB_PASS = environ.get('DB_PASS')        # config['database']['pass']
+DB_HOST_IP = environ.get('DB_HOST_IP')     # config['database']['host_ip']
+DB_HOST_PORT = environ.get('DB_HOST_PORT')   # config['database']['host_port']
+DB_NAME = environ.get('DB_NAME')        # config['database']['db_name']
 
 logging.info(
     f"Environment variables: db_host: '{DB_HOST_IP}', " + \
