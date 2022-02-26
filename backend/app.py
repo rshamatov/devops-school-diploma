@@ -61,7 +61,7 @@ logging.info(
     f"db_name: '{DB_NAME}', " + \
     f"db_user: '{DB_USER}'")
 
-db_initial = DbConnection(DB_HOST_IP, DB_HOST_PORT, DB_USER, DB_PASS)
+db_initial = DbConnection(DB_HOST_IP, DB_HOST_PORT, DB_USER, DB_PASS, DB_NAME)
 db_initial.create_database(DB_NAME)
 del db_initial
 

@@ -55,7 +55,7 @@ class DbConnection():
     db_name = ''
     tb_format = None
 
-    def __init__(self, host_ip, host_port, username, password, db_name=None):
+    def __init__(self, host_ip, host_port, username, password, db_name):
         try:
             logging.info(
                 f"Creating connection to PostgreSQL database '{db_name}' on host '{host_ip}:{host_port}' using username '{username}'")
